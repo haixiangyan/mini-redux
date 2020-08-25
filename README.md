@@ -10,7 +10,13 @@
 - [x] applyMiddlewares 函数
 - [x] Provider 组件
 
-同时使用 jest 对上面所有功能进行测试。
+使用 jest 对上面所有功能进行测试。
+
+## 打开方式
+
+查看源码：[/src](https://github.com/Haixiang6123/easy-redux/tree/master/src)
+
+通过测试代理来查看使用场景：[/test](https://github.com/Haixiang6123/easy-redux/tree/master/test)
 
 ## 测试
 
