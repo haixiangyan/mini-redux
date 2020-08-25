@@ -17,4 +17,12 @@ describe('reducer', () => {
 
     expect(nextState).toEqual({count: 0})
   })
+  it('没有命中 action type 时，返回原始状态', () => {
+    const state = {count: 1}
+    const addAction = {type: 'xxx', payload: 1}
+
+    const nextState = reducer(state, addAction)
+
+    expect(nextState).toEqual({count: 1})
+  })
 })
