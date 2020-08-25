@@ -1,20 +1,10 @@
-let initState = {
-  count: 1
-}
-
-const createStore = (initState) => {
+const createStore = (initState, reducer) => {
   let currentState = initState
 
   const getState = () => currentState
 
   const dispatch = (action) => {
-    switch (action.type) {
-      case 'plus':
-        currentState = {
-          ...currentState,
-          count: currentState.count + action.payload
-        }
-    }
+    currentState = reducer(currentState, action)
   }
 
   const subscribe = () => {}

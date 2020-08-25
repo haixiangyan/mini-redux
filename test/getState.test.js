@@ -1,10 +1,11 @@
 import createStore from "../src/createStore"
+import reducer from "../src/reducer"
 
-describe('测试 getState 函数', () => {
+describe('getState', () => {
   it('能正常返回 state', () => {
     const initState = {count: 1}
 
-    const store = createStore(initState)
+    const store = createStore(initState, reducer)
 
     expect(store.getState()).toEqual(initState)
   })
