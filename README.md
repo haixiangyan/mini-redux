@@ -12,7 +12,7 @@
 
 使用 jest 对上面所有功能进行测试。
 
-## 打开方式
+## 食用方式
 
 查看源码：[/src](https://github.com/Haixiang6123/easy-redux/tree/master/src)
 
