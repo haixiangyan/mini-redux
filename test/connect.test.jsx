@@ -76,4 +76,45 @@ describe('connect', () => {
 
     expect(count).toEqual('1')
   })
+  it('可以使用装饰器模式', () => {
+    const state = {count: 0}
+
+    const store = createStore(state, reducer)
+
+    const mapStateToProps = (state) => {
+      return {count: state.count}
+    }
+    const mapDispatchToProps = (dispatch) => ({
+      add: () => dispatch({type: 'add', payload: 1})
+    })
+
+    @connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )
+    class ConnectedChild extends React.Component {
+      render() {
+        return (
+          <div className="child">
+            <button onClick={this.props.add} className="add-btn">Add</button>
+            <div className="text">{this.props.count}</div>
+          </div>
+        )
+      }
+    }
+
+    const App = () => (
+      <Provider store={store}>
+        <ConnectedChild/>
+      </Provider>
+    )
+
+    const wrapper = enzyme.mount(<App/>)
+
+    wrapper.find('.add-btn').props().onClick()
+
+    const count = wrapper.find('.text').text()
+
+    expect(count).toEqual('1')
+  })
 })
