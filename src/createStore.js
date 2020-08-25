@@ -18,4 +18,8 @@ const createStore = (initState) => {
   }
 
   const subscribe = () => {}
+
+  return { getState, dispatch, subscribe }
 }
+
+export default createStore
