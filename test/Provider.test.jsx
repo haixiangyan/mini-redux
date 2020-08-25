@@ -11,9 +11,7 @@ enzyme.configure({adapter: new Adapter()})
 
 describe('Provider', () => {
   it('子组件通过 this.context.store 获取全局状态', () => {
-    const state = {count: 0}
-
-    const store = createStore(state, reducer)
+    const store = createStore(reducer)
 
     class Child extends React.Component {
       static contextTypes = {

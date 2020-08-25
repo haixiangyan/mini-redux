@@ -11,9 +11,7 @@ enzyme.configure({adapter: new Adapter()})
 
 describe('connect', () => {
   it('可以获取 store 内容', () => {
-    const state = {count: 0}
-
-    const store = createStore(state, reducer)
+    const store = createStore(reducer)
 
     const Child = (props) => {
       return (
@@ -40,9 +38,7 @@ describe('connect', () => {
     expect(count).toEqual('0')
   })
   it('分发 action 时会更新组件', () => {
-    const state = {count: 0}
-
-    const store = createStore(state, reducer)
+    const store = createStore(reducer)
 
     const Child = (props) => {
       return (
@@ -77,9 +73,7 @@ describe('connect', () => {
     expect(count).toEqual('1')
   })
   it('可以使用装饰器模式', () => {
-    const state = {count: 0}
-
-    const store = createStore(state, reducer)
+    const store = createStore(reducer)
 
     const mapStateToProps = (state) => {
       return {count: state.count}

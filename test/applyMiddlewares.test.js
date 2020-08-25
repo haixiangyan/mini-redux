@@ -12,9 +12,7 @@ describe('applyMiddlewares', () => {
   })
 
   it('正确执行中间件', () => {
-    const initState = {count: 0}
-
-    const store = createStore(initState, reducer)
+    const store = createStore(reducer)
 
     applyMiddlewares(store, [logger1, logger2])
 

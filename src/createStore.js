@@ -1,5 +1,5 @@
-const createStore = (initState, reducer) => {
-  let currentState = initState
+const createStore = (reducer) => {
+  let currentState = {}
   let observers = [] // 观察者队列
 
   const getState = () => currentState

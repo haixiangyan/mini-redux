@@ -1,4 +1,4 @@
-const initState = {count: 0}
+export const initState = {count: 0}
 
 const reducer = (state = initState, action) => {
   switch (action.type) {
@@ -13,7 +13,7 @@ const reducer = (state = initState, action) => {
         count: state.count - action.payload
       }
     default:
-      return state
+      return initState
   }
 }
 

@@ -3,9 +3,7 @@ import reducer from "../src/reducer"
 
 describe('subscribe', () => {
   it('可以监听变化', () => {
-    const initState = {count: 1}
-
-    const store = createStore(initState, reducer)
+    const store = createStore(reducer)
 
     const mockFn1 = jest.fn()
     const mockFn2 = jest.fn()
