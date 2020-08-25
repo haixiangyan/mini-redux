@@ -1,4 +1,6 @@
-const reducer = (state, action) => {
+const initState = {count: 0}
+
+const reducer = (state = initState, action) => {
   switch (action.type) {
     case 'add':
       return {

@@ -9,4 +9,9 @@ describe('getState', () => {
 
     expect(store.getState()).toEqual(initState)
   })
+  it('状态为 undefined 时，reducer 的初始状态', () => {
+    const store = createStore(undefined, reducer)
+
+    expect(store.getState()).toEqual({count: 0})
+  })
 })
