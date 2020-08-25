@@ -1,4 +1,9 @@
-const createStore = (reducer) => {
+const createStore = (reducer, enhancer) => {
+  // 是否需要增强 createStore
+  if (enhancer) {
+    return enhancer(createStore)(reducer)
+  }
+
   let currentState = {}
   let observers = [] // 观察者队列
 

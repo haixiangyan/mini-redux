@@ -1,9 +1,25 @@
-const applyMiddlewares = (store, middlewares) => {
-  middlewares = [...middlewares] // 浅拷贝
-  middlewares.reverse() // 循环替换 dispatch 的时候要进行翻转，每一个其实是在最里面
-  middlewares.forEach(middleware => {
-    store.dispatch = middleware(store)
-  })
+const applyMiddlewares = (...middlewares) => createStore => reducer => {
+  const store = createStore(reducer)
+
+  let {getState, dispatch} = store
+
+  const params = {
+    getState,
+    dispatch: action => dispatch(action) // 避免中间件公用一个 dispatch
+  }
+
+  const middlewareList = middlewares.map(middleware => middleware(params))
+
+  dispatch = compose(...middlewareList)(dispatch)
+
+  return {...store, dispatch}
+}
+
+// compose这一步对应了middlewares.reverse()
+const compose = (...fns) => {
+  if (fns.length === 0) return arg => arg
+  if (fns.length === 1) return fns[0]
+  return fns.reduce((res, cur) => (...args) => res(cur(...args)))
 }
 
 export default applyMiddlewares
