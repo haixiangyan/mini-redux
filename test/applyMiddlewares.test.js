@@ -12,9 +12,9 @@ describe('applyMiddlewares', () => {
   })
 
   it('正确执行中间件', () => {
-    const store = createStore(reducer)
+    const enhancer = applyMiddlewares(logger1, logger2)
 
-    applyMiddlewares(store, [logger1, logger2])
+    const store = createStore(reducer, enhancer)
 
     store.dispatch({type: 'add', payload: 1})
 
