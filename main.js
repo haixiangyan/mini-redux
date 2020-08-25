@@ -1,7 +1,7 @@
 const createStore = () => {
   let currentState = {}
 
-  const getState = () => {}
+  const getState = () => currentState
 
   const dispatch = () => {}
 
