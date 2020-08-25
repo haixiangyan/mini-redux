@@ -46,15 +46,21 @@ describe('connect', () => {
 
     const Child = (props) => {
       return (
-        <div className="child">{props.count}</div>
+        <div className="child">
+          <button onClick={props.add} className="add-btn">Add</button>
+          <div className="text">{props.count}</div>
+        </div>
       )
     }
 
     const mapStateToProps = (state) => {
       return {count: state.count}
     }
+    const mapDispatchToProps = (dispatch) => ({
+      add: () => dispatch({type: 'add', payload: 1})
+    })
 
-    const ConnectedChild = connect(mapStateToProps)(Child)
+    const ConnectedChild = connect(mapStateToProps, mapDispatchToProps)(Child)
 
     const App = () => (
       <Provider store={store}>
@@ -64,9 +70,9 @@ describe('connect', () => {
 
     const wrapper = enzyme.mount(<App/>)
 
-    store.dispatch({type: 'add', payload: 1})
+    wrapper.find('.add-btn').props().onClick()
 
-    const count = wrapper.find('.child').text()
+    const count = wrapper.find('.text').text()
 
     expect(count).toEqual('1')
   })
