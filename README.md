@@ -1,4 +1,4 @@
-# easy-redux
+# mini-redux
 
 [![Build Status](https://travis-ci.org/Haixiang6123/mini-redux.svg?branch=master)](https://travis-ci.org/Haixiang6123/mini-redux)
 
