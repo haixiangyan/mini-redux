@@ -1,5 +1,7 @@
 # easy-redux
 
+[![Build Status](https://travis-ci.org/Haixiang6123/mini-redux.svg?branch=master)](https://travis-ci.org/Haixiang6123/mini-redux)
+
 使用原生 JS 写的一个微小版 redux，其中已实现：
 
 - [x] createStore 函数
